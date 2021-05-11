@@ -1,0 +1,234 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Update Agency Form</h4>
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Agency</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/agencies">Agency List</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Update Agency</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+
+                        <div class="card-block">
+                            <form id="main" action="" method="POST" encrypt="multipart/form-data">
+                                <div class="form-group row">
+                                  
+                                    <div class="col-sm-4">
+                                        <label>Agency Name</label>
+                                        <input type="text" value="" class="form-control"  name="agency_name" value="{{agencyDetails.[0].agency_name}}" id="agency_name"
+                                            required="" placeholder="Agency Name" onblur="agencyName()">
+                                        <span class="messages" id="errorname" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+                           
+                                   
+                                    <div class="col-sm-4">
+                                        <label>Agency Email</label>
+                                        <input type="email" class="form-control" id="user_email" name="email" value="{{agencyDetails.[0].email}}"
+                                            required="" placeholder="Password input" onblur="agencyEmail()">
+                                        <span class="messages" id="erroremail" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+                             
+                                  
+                                    <div class="col-sm-4">
+                                        <label >User Name</label>
+                                        <input type="text" class="form-control" name="username" value="{{agencyDetails.[0].username}}" id="username"
+                                            required="" placeholder="User Name">
+                                        <span class="messages" id="slugsms" style="color: red;"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    
+                                    <div class="col-sm-6">
+                                        <label >llc_or_registration_no</label>
+                                        <input type="text" class="form-control" id="registration_no" required="" value="{{agencyDetails.[0].llc_or_registration_no}}"
+                                            name="llc_or_registration_no" placeholder="registration_no">
+                                        <span class="messages"></span>
+                                    </div>
+                                   
+                                    <div class="col-sm-6">
+                                        <label >Contact Number</label>
+                                        <input type="text" class="form-control" id="user_contact" required=""
+                                            name="contact"  value="{{agencyDetails.[0].contact}}" placeholder="Contact Number">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                    <div class="form-group row">                                    
+                                        <div class="col-sm-12">
+                                            <label>Slug</label>
+                                            <div class="input-group input-group-button mb-0">
+                                                <span class="input-group-addon btn btn-primary" id="basic-addon9">
+                                                    <span id="baseurl"> </span>
+                                                </span>
+                                                <input type="text" onfocusout="change(event.target.value)" name="slug"
+                                                    id="slug" required="" class="form-control" value="{{agencyDetails.[0].slug}}" placeholder="" readonly>
+                                            </div>
+                                            <span class="messages" id="err"></span>
+                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    
+                                    <div class="col-sm-4">
+                                        <label>Complete Address</label>
+                                        <input type="text" class="form-control" id="complete_address" required=""
+                                            name="complete_address"  value="{{agencyDetails.[0].complete_address}}" placeholder="Complete Address">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    
+                                    <div class="col-sm-4">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" id="city" name="city" required=""  value="{{agencyDetails.[0].city}}"
+                                            placeholder="city">
+                                        <span class="messages"></span>
+                                    </div>
+                                   
+                                    <div class="col-sm-4">
+                                        <label>Country</label>
+                                        <input type="text" class="form-control" id="country" name="country" value="{{agencyDetails.[0].country}}" required=""
+                                            placeholder="country">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   
+                                    <div class="col-sm-4">
+                                        <label >Postal Code</label>
+                                        <input type="text" class="form-control" id="zip_code" name="zip_code" value="{{agencyDetails.[0].postals_code}}"
+                                            required="" placeholder="Postal Code">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label >Status</label>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="status" id="1"  
+                                                    value="1"> Active
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="status" id="0"
+                                                    value="0"> In-Active
+                                            </label>
+                                        </div>
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                    <div class="card-block">
+                                        <div class="sub-title">Agency Logo</div>
+                                        <input type="file" name="files" id="filer_input" multiple="multiple">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary m-b-0">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+</div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->
+
+<script>
+    function change(value) {
+        var res = value.replace(/ /g, "_");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            console.log('function call ')
+            if (this.response == 'false') {
+                console.log('inner call ')
+                document.getElementById("err").innerHTML = "*" + slug + " is already exist in database";
+                console.log('is already exist in database')
+            }
+            if (this.response == 'true') {
+                document.getElementById("baseurl").innerHTML = "http://localhost:3000/"
+                document.getElementById("slug").value = res;
+                document.getElementById("err").innerHTML = '';
+            }
+        };
+        var slug = res
+        xhttp.open("GET", slug, true);
+        xhttp.send();
+        console.log(xhttp)
+    }
+</script>
+
+<!-- <script>
+function getslag() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+</script> -->
+
+<script>
+    // Check for the File API support.
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+        document.getElementById('logo').addEventListener('change', handleFileSelect, false);
+    } else {
+        alert('The File APIs are not fully supported in this browser.');
+    }
+
+    function handleFileSelect(evt) {
+        var f = evt.target.files[0]; // FileList object
+        var reader = new FileReader();
+        // Closure to capture the file information.
+        reader.onload = (function (theFile) {
+            return function (e) {
+                var binaryData = e.target.result;
+                //Converting Binary Data to base 64
+                var base64String = window.btoa(binaryData);
+                console.log(base64String)
+            };
+        })(f);
+        // Read in the image file as a data URL.
+        reader.readAsBinaryString(f);
+    }
+</script>
+<script>
+document.getElementById('baseurl').innerHTML=window.origin
+</script>

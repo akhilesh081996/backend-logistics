@@ -1,0 +1,197 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+
+
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Attendance tab card start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Attendance</h4>
+                                            <span>Staff</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">HR</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Attendance</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="card-block">
+                            <!-- Row start -->
+                            <div class="row m-b-30">
+                                <div class="col-lg-12 col-xl-12">
+                                    <!-- <div class="sub-title"></div> -->
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs md-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">All</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">Present</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#messages3" role="tab">Leave</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#settings3" role="tab">Absent</a>
+                                            <div class="slide"></div>
+                                        </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content card-block">
+                                        <div class="tab-pane active" id="home3" role="tabpanel">
+                                            <div class="table-responsive dt-responsive">
+                                                <table id="attendance_list" class="table table-striped nowrap dataTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Mobile no.</th>
+                                                            <th>Designation</th>
+                                                            <th>Agency</th>
+                                                            <th></th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="profile3" role="tabpanel">
+                                            <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                        </div>
+                                        <div class="tab-pane" id="messages3" role="tabpanel">
+                                            <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,
+                                                nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+                                        </div>
+                                        <div class="tab-pane" id="settings3" role="tabpanel">
+                                            <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Row end -->
+
+                        </div>
+                    </div>
+                    <!-- Material tab card end -->
+                </div>
+            </div>
+
+        </div>
+        <!-- Page body end -->
+    </div>
+    <!-- End page wrapper -->
+
+    <div class="overlay"></div>
+    <div class="popout">
+        <span class="cross">+</span>
+        <div class="popout-document" role="document">
+            <h5 class="PL15" id="attendance-entryDate">Wed, 05 Feb 2020</h5>
+            <div class="card-block table-border-style popout-table">
+                <div class="table-responsive">
+                    <table class="table table-hover show-user-attendance">
+                        <thead>
+                            <tr>
+                                <th>Checkin</th>
+                                <th>Checkout</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>11:00am</td>
+                                <td>12:00pm</td>
+                                <td>Delivered a box of kites.</td>
+                            </tr>
+                            <tr>
+                                <td>11:00am</td>
+                                <td>12:00pm</td>
+                                <td>Delivered a box of kites.</td>
+                            </tr>
+                            <tr>
+                                <td>11:00am</td>
+                                <td>12:00pm</td>
+                                <td>Delivered a box of kites.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-popout-document">
+                <div class="show_new_entry">
+                    <form method="post" id="attendance_form" action="/save_attendance">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label>CheckIn</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" placeholder="Checkin time" name="check_in">
+                                    <span class="input-group-addon ">
+                                                    <span class="icofont icofont-ui-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>CheckOut</label>
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control" placeholder="Checkout time" name="check_out">
+                                    <span class="input-group-addon ">
+                                                    <span class="icofont icofont-ui-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label>Notes</label>
+                                <textarea form="attendance_form" class="form-control" name="notes" id="notes" placeholder="Add notes"></textarea>
+                                <span class="messages"></span>
+                            </div>
+                            <input type="hidden" name="user_id" id="user_id">
+                            <div class="col-sm-12 popout-buttons">
+                                <button type="button" class="btn btn-inverse btn-mini waves-effect waves-light" onclick="saveAttendance()">Save</button>
+                                <button type="button" class="btn btn-blue btn-mini waves-effect waves-light" onclick="hideAttendanceForm()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- end /.toclone -->
+            </div>
+            <!-- end cloned link elements -->
+        </div>
+
+        <button class="btn btn-primary m-b-15 main-poput-button" onclick="showNewEntry(this)">add new entry</button>
+        <div class="popout-footer">
+            <label class="first-checkin">First-Checkin <span id="first_checkin">11:15am</span></label>
+            <label class="last-checkout">Last-Checkout <span id="last_checkout">10:00pm</span></label>
+            <label class="total-hours">Total Hours <span id="total_hours">12</span></label>
+        </div>
+    </div>
+    <!-- Main-body end -->
+</div>

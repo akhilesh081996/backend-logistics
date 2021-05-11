@@ -1,0 +1,202 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Service And Maintenance</h4>
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Vehicle</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Add Vehicle</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="card-block cz-add-customer">
+                            <form id="service_and_maintenance" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Select Vehicle</label>
+                                        <select class="form-control" name="registration_no" id="registration_no">
+                                            {{#each vehiclesList}}
+                                               <option value="{{this.registration_no}}">
+                                                {{this.registration_no}} </option>
+
+                                            {{/each }}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Service Date</label>
+                                        <input type="date" class="form-control" name="service_date"
+                                            id="service_date" required placeholder="Select service Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Total Run (KM)</label>
+                                        <input type="number" class="form-control" id="total_run"
+                                            name="total_run" required placeholder="Enter Total KM">
+                                        <span class="messages"></span>
+                                    </div>
+                         
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Cost of Service</label>
+                                        <input type="number" class="form-control" id="service_cost" required
+                                            name="service_cost" placeholder="Enter Service Charge">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Cost of Labour</label>
+                                        <input type="number" class="form-control" name="labour_cost" id="labour_cost"
+                                            required placeholder="Enter Labour Cost">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Total Cost</label>
+                                        <input type="number" class="form-control" id="total_cost" name="total_cost" required
+                                            placeholder="Enter Total Charge">
+                                        <span class="messages"></span>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Workshop Name</label>
+                                        <input type="text" class="form-control" id="workshop_name" required
+                                            name="workshop_name" placeholder="Enter Workshop Name">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Workshop Contact</label>
+                                        <input type="number" class="form-control" name="workshop_contact" id="workshop_contact" required
+                                            placeholder="Enter Workshop Contact">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Workshop Address</label>
+                                        <textarea class="form-control" rows="4" cols="50" name="workshop_address"
+                                            id="workshop_address" placeholder="Enter Workshop Address"
+                                            required></textarea>
+                                        <span class="messages"></span>
+                                    </div>
+
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Maker's Name</label>
+                                        <input type="text" class="form-control" name="maker_name" id="maker_name"
+                                            required placeholder="Vehicle Company Name">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Fuel Type</label>
+                                        <input type="text" class="form-control" id="fuel_type" name="fuel_type" required
+                                        placeholder="Fuel Type">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>No. Of Wheels</label>
+                                        <input type="text" class="form-control" id="no_of_wheels" required
+                                            name="no_of_wheels" placeholder="Enter Contact Number">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Tax paid Upto</label>
+                                        <input type="date" class="form-control" name="insurance_valid_upto"
+                                            id="insurance_valid_upto" required
+                                            placeholder="Enter Insurance Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Insurance Valid Upto</label>
+                                        <input type="date" class="form-control" id="tax_paid_upto" name="tax_paid_upto"
+                                            required placeholder="Enter Tax Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Permit Valid Upto</label>
+                                        <input type="date" class="form-control" id="permit_valid_upto" required
+                                            name="permit_valid_upto" placeholder="Enter Permit Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Owner's Name</label>
+                                        <input type="text" class="form-control" name="owner_name" id="owner_name"
+                                            required placeholder="Enter Owner's Name">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Owner's Contact No.</label>
+                                        <input type="text" class="form-control" id="owner_contact_no"
+                                            name="owner_contact_no" required placeholder="Enter Owner's Contact">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div> -->
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label>Service Discriptions</label>
+                                        <textarea class="form-control" rows="4" cols="50" name="work_discription"
+                                            id="work_discription" placeholder="Enter Work Discription"
+                                            required></textarea>
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Vehicle Images</div>
+                                            <input type="file" name="files[]" id="filer_input1" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Documents</div>
+                                            <input type="file" name="files1[]" id="filer_input2" multiple="multiple">
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->

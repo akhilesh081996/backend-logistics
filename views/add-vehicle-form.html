@@ -1,0 +1,253 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Add Vehicle</h4>
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Vehicle</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Add Vehicle</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+
+                            function getVehicleCategory() {
+                                agency_id = document.getElementById('agency').value;
+                                $.ajax({
+                                    'url': "/get-vehicle_category",
+                                    'method': "POST",
+                                    'data': { 'agency_id': agency_id }
+                                }).done(function (data) {
+                                    let vehiclecategory = data.data
+                                    let a = []
+                                    if(vehiclecategory.length){
+                                    vehiclecategory.forEach(element => {
+                                        a += "<option selected value='" + element.cat_id + "'>" + element.cat_name + "</option>"
+                                    })
+                                    $("#vehicle_class").append(a);
+                                }else{
+                                    $("#vehicle_class").html("<option value='0'>Others</option>");  
+                                }
+                                    getval = document.getElementById('vehicle_class').value;
+                                    if (getval == 0) {
+                                        $('#addoptions').show();
+
+                                    } else {
+                                        $('#addoptions').hide()
+                                    }
+                                })
+
+
+                            }
+
+                        </script>
+                        <!-- Page-header end -->
+                        <div class="card-block cz-add-customer">
+                            <form id="vehicle_form" method="POST" action="/add-vehicle-form" enctype='multipart/form-data'>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Choose Agency</label>
+                                        <select class="form-control" name="agency_id" id="agency"
+                                            onchange="getVehicleCategory()">
+                                            <option value="" disabled>All</option>
+                                            {{#each agenciesList}}
+                                            <option value="{{this.agency_id}}">
+                                                {{this.agency_name}} </option>
+                                            {{/each }}
+                                        </select>
+                                    </div>
+                                    <!-- <div class="col-sm-4">
+                                        <label>Select Agency</label>
+                                        <select class="js-example-basic-single col-sm-12" name="agency_id">
+                                            {{#each agenciesList}}
+                                            <option value="{{this.agency_name}}">{{this.agency_name}}</option>
+                                            {{/each}}
+                                        </select>
+                                        <span class="messages"></span>
+                                    </div> -->
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Registration No</label>
+                                        <input type="text" class="form-control" name="registration_no"
+                                            id="registration_no" required placeholder="Vehicle Registration No"
+                                            onblur="getRegistration()">
+                                        <span class="messages" id="error_registraion"
+                                            style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Registration Date</label>
+                                        <input type="date" class="form-control" id="registration_date" name="registration_date" required placeholder="Vehicle Registration Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Registration Validity</label>
+                                        <input type="date" class="form-control" id="registration_validity" required name="registration_validity" placeholder="Vehicle Registration Validity">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Chassis's No</label>
+                                        <input type="text" class="form-control" name="chassis_no" id="chassis_no"
+                                            required placeholder="Vehicle Chassis's No" onblur="getChassis()">
+                                        <span class="messages" id="error_chassis"
+                                            style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Engine No.</label>
+                                        <input type="text" class="form-control" id="engine_no" name="engine_no" required
+                                            placeholder="Vehicle Engine No" onblur="getEngine()">
+                                        <span class="messages" id="error_engine"
+                                            style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Vehicle Class</label>
+                                        <select class="form-control" name="vehicle_class" id="vehicle_class"
+                                            onchange="addmore()">
+                                            <option value="0">Others</option>
+                                        </select>
+                                        <input type="text" class="form-control" id="addoptions"
+                                            style="margin-top: 10px; display: none" name="new_vehicle_class" placeholder="Enter new category">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Colour</label>
+                                        <input type="text" class="form-control" name="color" id="color" required placeholder="Enter Vehicle Color">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Standard Seating Capacity</label>
+                                        <input type="text" class="form-control" id="seating_capacity" name="seating_capacity" required placeholder="Vehicle Seating Capacity">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>No. Of Cylinder</label>
+                                        <input type="text" class="form-control" id="no_of_cylinder" required name="no_of_cylinder" placeholder="No Of Vehicle Cylinder">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Maker's Name</label>
+                                        <input type="text" class="form-control" name="maker_name" id="maker_name" required placeholder="Vehicle Company Name">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Fuel Type</label>
+                                        <select class="form-control" name="fuel_type" id="fuel_type"
+                                            onchange="add_fuel_type()">
+                                            <option value="1">Petrol</option>
+                                            <option value="2">Diesel</option>
+                                            {{#each result}}
+                                            <option value="{{fuel_type}}">{{fuel_type}}</option>
+                                            {{/each}}
+                                            <option value="0">Others</option>
+                                        </select>
+                                        <input type="text" class="form-control" id="add_fuel"
+                                            style="margin-top: 10px;display: none" name="fuel_type"
+                                            placeholder="Vehicle Fuel Type">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>No. Of Wheels</label>
+                                        <input type="text" class="form-control" id="no_of_wheels" required name="no_of_wheels" placeholder="No Of Vehicle Wheels">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Tax paid Upto</label>
+                                        <input type="date" class="form-control" name="insurance_valid_upto" id="insurance_valid_upto" required placeholder="Vehicle Insurance Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Insurance Valid Upto</label>
+                                        <input type="date" class="form-control" id="tax_paid_upto" name="tax_paid_upto" required placeholder="Vehicle Tax Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Permit Valid Upto</label>
+                                        <input type="date" class="form-control" id="permit_valid_upto" required name="permit_valid_upto" placeholder="Vehicle Permit Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Owner's Name</label>
+                                        <input type="text" class="form-control" name="owner_name" id="owner_name" required placeholder="Vehicle Owner Name">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Owner's Contact No.</label>
+                                        <input type="text" class="form-control" id="owner_contact_no" name="owner_contact_no" required placeholder="Vehicle Owner Contact">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label>Complete Address</label>
+                                        <textarea class="form-control" rows="4" cols="50" name="owner_complete_address" id="owner_complete_address" placeholder="Vehicle Permanent address" required></textarea>
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <!-- <div class="row"> -->
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Vehicle Images</div>
+                                            <input type="file" name="vehicle_images" id="filer_input1" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Documents</div>
+                                            <input type="file" name="vehicle_documents" id="filer_input2" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->

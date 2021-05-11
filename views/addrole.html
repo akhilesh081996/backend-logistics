@@ -1,0 +1,630 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+
+
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            {{#if Role.[0].agency_id}}
+                                            <h4 >Update Role</h4>
+                                            {{else}}
+                                            <h4 >Add Role</h4>
+                                            {{/if}}
+                                            <span> You can add roles here..</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">HR</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/roles">Roles</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Add Roles</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="card-block cz-add-customer">
+                            <form id="main" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Role name </label>
+                                        <input  required class="form-control" type="text" id="role_name" name="role_name" placeholder="Enter Role Name"  value={{Role.[0].role_name}} >
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>Choose Agency</label>
+                                        <select class="form-control" id="agency" name="agency_id" value={{Role.[0].agency_id}} >
+                                            <option value="" disabled>All</option>
+                                            {{#each AgenciesList}}
+                                            <option  value="{{this.agency_id}}" id="{{this.agency_id}}" >
+                                                {{this.agency_name}} </option>
+
+                                            {{/each }}
+                                        </select>
+                                    </div>
+                                </div>
+{{Role.[0].permissions.crm}}
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label>Role Description</label>
+
+                                        <textarea class="form-control" rows="4" cols="50" name="description"
+                                            value="{{Role.[0].description}}" placeholder="Enter your present address"
+                                            required>{{Role.[0].description}}</textarea>
+                                        <span class="messages"></span>
+
+                                    </div>
+                                </div>
+                                <div class="j-divider j-gap-bottom-25"></div>
+                                <div class="j-unit h-width">
+                                    <div class="j-input">
+                                        <div class="perentcheckbox">
+
+
+                                            <label>
+                                            <input type="checkbox" name="crm" id="crm"
+                                                value="{{Role.[0].permissions.crm}}" class="checkbox"
+                                                onchange="showCheckboxes1(event.target.checked, 'crm1')">
+                                            CRM</label>
+                                        </div>
+                                        <div class="multiselect">
+                                            <div id="crm1" style="display: none;">
+                                                <label>
+                                                    <input type="checkbox" id="add1" value="add"
+                                                        onchange="getarrvelue1('add1',event.target.value)" />Add</label>
+                                                <label>
+                                                    <input type="checkbox" id="edit1" value="edit"
+                                                        onchange="getarrvelue1('edit1',event.target.value)" />Edit</label>
+                                                <label>
+                                                    <input type="checkbox" id="list1" value="list"
+                                                        onchange="getarrvelue1('list1',event.target.value)" />
+                                                    List</label>
+                                                <label>
+                                                    <input type="checkbox" id="delete1" value="delete"
+                                                        onchange="getarrvelue1('delete1',event.target.value)" />
+                                                    Delete</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-input">
+                                        <div class="perentcheckbox">
+                                            <label>
+                                            <input type="checkbox" name="hr" id="hr" value="{{Role.[0].permissions.hr}}"
+                                                class="checkboxes"
+                                                onchange="showCheckboxes2(event.target.checked, 'hr1')">
+                                            HR</label>
+                                        </div>
+                                        <div class="multiselect">
+                                            <div id="hr1" style="display: none;">
+                                                <label >
+                                                    <input type="checkbox" id="add2" value="add"
+                                                        onchange="getarrvelue2('add2',event.target.value)" />Add</label>
+                                                <label >
+                                                    <input type="checkbox" id="edit2" value="edit"
+                                                        onchange="getarrvelue2('edit2',event.target.value)" />Edit</label>
+                                                <label >
+                                                    <input type="checkbox" id="list2" value="list"
+                                                        onchange="getarrvelue2('list2',event.target.value)" />
+                                                    List</label>
+                                                <label>
+                                                    <input type="checkbox" id="delete2" value="delete"
+                                                        onchange="getarrvelue2('delete2',event.target.value)" />
+                                                    Delete</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-input">
+                                        <div class="perentcheckbox">
+                                            <label>
+                                            <input type="checkbox" name="report" id="report"
+                                                value="{{Role.[0].permissions.report}}"
+                                                onchange="showCheckboxes3(event.target.checked, 'report1')">
+                                             REPORT</label>
+                                        </div>
+                                        <div class="multiselect">
+                                            <div id="report1" style="display: none;">
+                                                <label>
+                                                    <input type="checkbox" id="add3" value="add"
+                                                        onchange="getarrvelue3('add3',event.target.value)" />Add</label>
+                                                <label>
+                                                    <input type="checkbox" id="edit3" value="edit"
+                                                        onchange="getarrvelue3('edit3',event.target.value)" />Edit</label>
+                                                <label>
+                                                    <input type="checkbox" id="list3" value="list"
+                                                        onchange="getarrvelue3('list3',event.target.value)" />
+                                                    List</label>
+                                                <label>
+                                                    <input type="checkbox" id="delete3" value="delete"
+                                                        onchange="getarrvelue3('delete3',event.target.value)" />
+                                                    Delete</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-input">
+                                        <div class="perentcheckbox">
+                                            <label>
+                                            <input type="checkbox" name="vehicle" id="vehicle"
+                                                value="{{Role.[0].permissions.vehicle}}"
+                                                onchange="showCheckboxes4(event.target.checked,'vehicle1')">
+                                            VEHICLE </label>
+                                        </div>
+                                        <div class="multiselect">
+                                            <div id="vehicle1" style="display: none;">
+                                                <label>
+                                                    <input type="checkbox" id="add4" value="add"
+                                                        onchange="getarrvelue4('add4',event.target.value)" />Add</label>
+                                                <label>
+                                                    <input type="checkbox" id="edit4" value="edit"
+                                                        onchange="getarrvelue4('edit4',event.target.value)" />Edit</label>
+                                                <label>
+                                                    <input type="checkbox" id="list4" value="list"
+                                                        onchange="getarrvelue4('list4',event.target.value)" />
+                                                    List</label>
+                                                <label >
+                                                    <input type="checkbox" id="delete4" value="delete"
+                                                        onchange="getarrvelue4('delete4',event.target.value)" />
+                                                    Delete</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-input">
+                                        <div class="perentcheckbox">
+                                            <label>
+                                            <input type="checkbox" name="driver" id="driver"
+                                                value="{{Role.[0].permissions.driver}}"
+                                                onchange="showCheckboxes5(event.target.checked,'driver1')">
+                                           DRIVER </label>
+                                        </div>
+                                        <div class="multiselect">
+                                            <div id="driver1" style="display: none;">
+                                                <label >
+                                                    <input type="checkbox" id="add5" value="add"
+                                                        onchange="getarrvelue5('add5',event.target.value)" />Add</label>
+                                                <label>
+                                                    <input type="checkbox" id="edit5" value="edit"
+                                                        onchange="getarrvelue5('edit5',event.target.value)" />Edit</label>
+                                                <label>
+                                                    <input type="checkbox" id="list5" value="list"
+                                                        onchange="getarrvelue5('list5',event.target.value)" />
+                                                    List</label>
+                                                <label>
+                                                    <input type="checkbox" id="delete5" value="delete"
+                                                        onchange="getarrvelue5('delete5',event.target.value)" />
+                                                    Delete</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        
+                                        <button type="submit" class="btn btn-primary btn-round cz_btn_pedding" >Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->
+
+<script>
+    var arr1 = []
+
+    var expanded1 = false;
+
+    function showCheckboxes1(value, dropdownid) {
+         
+        showlist1(dropdownid)
+        if (value == true) {
+            // document.getElementById("add1").checked = true;
+            // document.getElementById("edit1").checked = true;
+            // document.getElementById("delete1").checked = true;
+            document.getElementById("list1").checked = true;
+            arr1 = [ 'list']
+
+            document.getElementById("crm").value = arr1;
+
+
+       } if (value == false) {
+            document.getElementById("add1").checked = false;
+            document.getElementById("edit1").checked = false;
+            document.getElementById("delete1").checked = false;
+            document.getElementById("list1").checked = false;
+            arr1 = [];
+            console.log('if not', arr1)
+       }
+        document.getElementById("crm").value = arr1;
+    }
+
+    function showlist1(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded1) {
+            checkboxes.style.display = "block";
+            expanded1 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded1 = false;
+        }
+
+    }
+
+    function getarrvelue1(value, sd) {
+        if (document.getElementById(value).checked == true) {
+            arr1.push(sd)
+            document.getElementById("crm").value = arr1;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr1.indexOf(sd);
+            if (index > -1) {
+                arr1.splice(index, 1);
+                if (arr1.length < 1) {
+                    document.getElementById("crm").checked = false;
+                    var checkboxes = document.getElementById("crm1");
+                    checkboxes.style.display = "none";
+                    expanded1 = false;
+                }
+            }
+        }
+        document.getElementById("crm").value = arr1;
+
+    }
+</script>
+
+<script>
+    var href1 = window.location.href
+    var expanded2 = false;
+    var arr2 = []
+    function showCheckboxes2(value, dropdownid) {
+        showlist2(dropdownid)
+
+        if (value == true) {
+            // document.getElementById("add2").checked = true;
+            // document.getElementById("edit2").checked = true;
+            // document.getElementById("delete2").checked = true;
+            document.getElementById("list2").checked = true;
+            arr2 = [ 'list']
+            document.getElementById("hr").value = arr2;
+
+
+
+        } if (value == false) {
+            document.getElementById("add2").checked = false;
+            document.getElementById("edit2").checked = false;
+            document.getElementById("delete2").checked = false;
+            document.getElementById("list2").checked = false;
+            arr2 = [];
+
+        }
+        document.getElementById("hr").value = arr2;
+    }
+
+    function showlist2(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded2) {
+            checkboxes.style.display = "block";
+            expanded2 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded2 = false;
+        }
+
+    }
+
+    function getarrvelue2(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr2.push(realvelue)
+            document.getElementById("hr").value = arr2;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr2.indexOf(realvelue);
+
+            if (index > -1) {
+                arr2.splice(index, 1);
+                if (arr2.length < 1) {
+                    document.getElementById("hr").checked = false;
+                    var checkboxes = document.getElementById("hr1");
+                    checkboxes.style.display = "none";
+                    expanded2 = false;
+
+                }
+            }
+
+
+        }
+        document.getElementById("hr").value = arr2;
+
+    }
+</script>
+
+
+<script>
+    var arr3 = []
+
+    var expanded3 = false;
+
+    function showCheckboxes3(value, dropdownid) {
+        showlist3(dropdownid)
+        if (value == true) {
+            // document.getElementById("add3").checked = true;
+            // document.getElementById("edit3").checked = true;
+            // document.getElementById("delete3").checked = true;
+            document.getElementById("list3").checked = true;
+            arr3 = ['list']
+            document.getElementById("report").value = arr3;
+
+
+        } if (value == false) {
+            document.getElementById("add3").checked = false;
+            document.getElementById("edit3").checked = false;
+            document.getElementById("delete3").checked = false;
+            document.getElementById("list3").checked = false;
+            arr3 = [];
+
+        }
+        document.getElementById("report").value = arr3;
+    }
+
+    function showlist3(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded3) {
+            checkboxes.style.display = "block";
+            expanded3 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded3 = false;
+        }
+
+    }
+
+    function getarrvelue3(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr3.push(realvelue)
+            document.getElementById("report").value = arr3;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr3.indexOf(realvelue);
+
+            if (index > -1) {
+                arr3.splice(index, 1);
+                if (arr3.length < 1) {
+                    document.getElementById("report").checked = false;
+                    var checkboxes = document.getElementById("report1");
+                    checkboxes.style.display = "none";
+                    expanded3 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("report").value = arr3;
+
+    }
+</script>
+
+
+<script>
+    var arr4 = []
+
+    var expanded4 = false;
+
+    function showCheckboxes4(value, dropdownid) {
+        showlist4(dropdownid)
+        if (value == true) {
+            // document.getElementById("add4").checked = true;
+            // document.getElementById("edit4").checked = true;
+            // document.getElementById("delete4").checked = true;
+            document.getElementById("list4").checked = true;
+            arr4 = [ 'list']
+            document.getElementById("vehicle").value = arr4;
+
+
+
+        } if (value == false) {
+            document.getElementById("add4").checked = false;
+            document.getElementById("edit4").checked = false;
+            document.getElementById("delete4").checked = false;
+            document.getElementById("list4").checked = false;
+            arr4 = [];
+
+        }
+        document.getElementById("vehicle").value = arr4;
+    }
+
+    function showlist4(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded4) {
+            checkboxes.style.display = "block";
+            expanded4 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded4 = false;
+        }
+
+    }
+
+    function getarrvelue4(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr4.push(realvelue)
+            document.getElementById("vehicle").value = arr4;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr4.indexOf(realvelue);
+
+            if (index > -1) {
+                arr4.splice(index, 1);
+                if (arr4.length < 1) {
+                    document.getElementById("vehicle").checked = false;
+                    var checkboxes = document.getElementById("vehicle1");
+                    checkboxes.style.display = "none";
+                    expanded4 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("vehicle").value = arr4;
+
+    }
+</script>
+
+<script>
+    var arr5 = []
+
+    var expanded5 = false;
+
+    function showCheckboxes5(value, dropdownid) {
+        showlist5(dropdownid)
+        if (value == true) {
+            // document.getElementById("add5").checked = true;
+            // document.getElementById("edit5").checked = true;
+            // document.getElementById("delete5").checked = true;
+            document.getElementById("list5").checked = true;
+            arr5 = [ 'list']
+            document.getElementById("driver").value = arr5;
+
+
+
+        } if (value == false) {
+            document.getElementById("add5").checked = false;
+            document.getElementById("edit5").checked = false;
+            document.getElementById("delete5").checked = false;
+            document.getElementById("list5").checked = false;
+            arr5 = [];
+
+        }
+        document.getElementById("driver").value = arr5;
+    }
+
+    function showlist5(value) {
+        console.log('value show5', value)
+        var checkboxes = document.getElementById(value);
+        if (!expanded5) {
+            checkboxes.style.display = "block";
+            expanded5 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded5 = false;
+        }
+
+    }
+
+    function getarrvelue5(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr5.push(realvelue)
+            document.getElementById("driver").value = arr5;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr5.indexOf(realvelue);
+
+            if (index > -1) {
+                arr5.splice(index, 1);
+                if (arr5.length < 1) {
+                    document.getElementById("driver").checked = false;
+                    var checkboxes = document.getElementById("driver1");
+                    checkboxes.style.display = "none";
+                    expanded5 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("driver").value = arr5;
+
+    }
+</script>
+<script>
+ var country = document.getElementById("agency_id").value;
+console.log('country',document.getElementById("agency_id"))
+ document.getElementById(country).selected = true
+// country.options[country.options.selectedIndex].setAttribute("selected", "selected");
+</script>
+<script>
+     console.log(window.location.href,'http://localhost:3000/update-role/'+country)
+    if (country) {
+        
+        if (document.getElementById("crm").value) {
+            console.log('truetruetruetruetruetruetruetruetruetruetrue')
+            document.getElementById("crm").checked = true
+            document.getElementById("crm1").style.display = 'block'
+            var res1 = document.getElementById("crm").value.split(",");
+            for (let i = 0; i < res1.length; i++) {
+                document.getElementById(res1[i] + '1').checked = true;
+                document.getElementById(res1[i] + '1').value = res1[i];
+
+            }
+        }
+        if (document.getElementById("hr").value) {
+            document.getElementById("hr").checked = true
+            document.getElementById("hr1").style.display = 'block'
+            var res2 = document.getElementById("hr").value.split(",");
+            for (let i = 0; i < res2.length; i++) {
+                document.getElementById(res2[i] + '2').checked = true;
+                document.getElementById(res2[i] + '2').value = res2[i];
+            }
+        }
+        if (document.getElementById("report").value) {
+            document.getElementById("report").checked = true
+            document.getElementById("report1").style.display = 'block'
+            var res3 = document.getElementById("report").value.split(",");
+            for (let i = 0; i < res3.length; i++) {
+                document.getElementById(res3[i] + '3').checked = true;
+                document.getElementById(res3[i] + '3').value = res3[i];
+            }
+        }
+        if (document.getElementById("vehicle").value) {
+            document.getElementById("vehicle").checked = true
+            document.getElementById("vehicle1").style.display = 'block'
+            var res4 = document.getElementById("vehicle").value.split(",");
+            for (let i = 0; i < res4.length; i++) {
+                document.getElementById(res4[i] + '4').checked = true;
+                document.getElementById(res4[i] + '4').value = res4[i];
+            }
+        }
+        if (document.getElementById("driver").value) {
+            document.getElementById("driver").checked = true
+            document.getElementById("driver1").style.display = 'block'
+            var res5 = document.getElementById("driver").value.split(",");
+            for (let i = 0; i < res5.length; i++) {
+                document.getElementById(res5[i] + '5').checked = true;
+                document.getElementById(res5[i] + '5').value = res5[i];
+            }
+        }
+    }
+     
+</script>

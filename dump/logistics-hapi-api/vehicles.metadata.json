@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"logistics-hapi-api.vehicles"},{"v":2,"unique":true,"key":{"registration_no":1},"name":"registration_no_1","ns":"logistics-hapi-api.vehicles","background":true}],"uuid":"611d1e98e9e444abbd98c0aec839446b"}

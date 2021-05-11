@@ -1,0 +1,552 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page-header start -->
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <div class="d-inline">
+                            <h4>Update Role Form</h4>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#!">Pages</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#!">Sample page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page-header end -->
+
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Enter Role Name</h5>
+                            <span>As pr your choice .you can give any name.!</span>
+
+                        </div>
+                        <div class="card-block">
+                            <div class="j-wrapper j-wrapper-640">
+                                <form action="/add-role" method="POST" class="j-pro" id="j-pro" novalidate="">
+                                    <div class="j-content">
+                                        <!-- start name -->
+                                        <div class="j-unit f-width">
+                                            <label class="j-label">Role name</label>
+                                            <div class="j-input">
+                                                <label class="j-icon-right" for="name">
+                                                    <i class="icofont icofont-ui-user"></i>
+                                                </label>
+                                                <input type="text" id="role_name" name="role_name">
+                                            </div>
+                                        </div>
+                                        <!-- end name -->
+
+                                        <div class="j-divider j-gap-bottom-25"></div>
+                                        <!-- start message -->
+                                        <div class="j-unit f-width">
+                                            <label class="j-label">Role Description</label>
+                                            <div class="j-input">
+                                                <textarea spellcheck="false" name="discription"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- end message -->
+
+                                        <div class="j-divider j-gap-bottom-25"></div>
+                                        <div class="j-unit h-width">
+                                            <div class="j-input">
+                                                <div class="perentcheckbox">
+                                                    <input type="checkbox" name="crm" id="crm" value="" class="checkbox"
+                                                        onchange="showCheckboxes1(event.target.checked, 'crm1')">
+                                                    <span> CRM </span>
+                                                </div>
+                                                <div class="multiselect">
+                                                    <div id="crm1" style="display: none;">
+                                                        <label for="one">
+                                                            <input type="checkbox" id="add1" value="add"
+                                                                onchange="getarrvelue1('add1',event.target.value)" />Add</label>
+                                                        <label for="two">
+                                                            <input type="checkbox" id="edit1" value="edit"
+                                                                onchange="getarrvelue1('edit1',event.target.value)" />Edit</label>
+                                                        <label for="three">
+                                                            <input type="checkbox" id="list1" value="list"
+                                                                onchange="getarrvelue1('list1',event.target.value)" />
+                                                            List</label>
+                                                        <label for="four">
+                                                            <input type="checkbox" id="delete1" value="delete"
+                                                                onchange="getarrvelue1('delete1',event.target.value)" />
+                                                            Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="j-input">
+                                                <div class="perentcheckbox">
+                                                    <input type="checkbox" name="hr" id="hr" value="" class="checkboxes"
+                                                        onchange="showCheckboxes2(event.target.checked, 'hr1')">
+                                                    <span class="checkboxspan"> HR</span>
+                                                </div>
+                                                <div class="multiselect">
+                                                    <div id="hr1" style="display: none;">
+                                                        <label for="one">
+                                                            <input type="checkbox" id="add2" value="add"
+                                                                onchange="getarrvelue2('add2',event.target.value)" />Add</label>
+                                                        <label for="two">
+                                                            <input type="checkbox" id="edit2" value="edit"
+                                                                onchange="getarrvelue2('edit2',event.target.value)" />Edit</label>
+                                                        <label for="three">
+                                                            <input type="checkbox" id="list2" value="list"
+                                                                onchange="getarrvelue2('list2',event.target.value)" />
+                                                            List</label>
+                                                        <label for="four">
+                                                            <input type="checkbox" id="delete2" value="delete"
+                                                                onchange="getarrvelue2('delete2',event.target.value)" />
+                                                            Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="j-input">
+                                                <div class="perentcheckbox">
+                                                    <input type="checkbox" name="report" id="report" value=""
+                                                        onchange="showCheckboxes3(event.target.checked, 'report1')">
+                                                    <span> REPORT</span>
+                                                </div>
+                                                <div class="multiselect">
+                                                    <div id="report1" style="display: none;">
+                                                        <label for="one">
+                                                            <input type="checkbox" id="add3" value="add"
+                                                                onchange="getarrvelue3('add3',event.target.value)" />Add</label>
+                                                        <label for="two">
+                                                            <input type="checkbox" id="edit3" value="edit"
+                                                                onchange="getarrvelue3('edit3',event.target.value)" />Edit</label>
+                                                        <label for="three">
+                                                            <input type="checkbox" id="list3" value="list"
+                                                                onchange="getarrvelue3('list3',event.target.value)" />
+                                                            List</label>
+                                                        <label for="four">
+                                                            <input type="checkbox" id="delete3" value="delete"
+                                                                onchange="getarrvelue3('delete3',event.target.value)" />
+                                                            Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="j-input">
+                                                <div class="perentcheckbox">
+                                                    <input type="checkbox" name="vehicle" id="vehicle" value=""
+                                                        onchange="showCheckboxes4(event.target.checked,'vehicle1')">
+                                                    <span> VEHICLE</span>
+                                                </div>
+                                                <div class="multiselect">
+                                                    <div id="vehicle1" style="display: none;">
+                                                        <label for="one">
+                                                            <input type="checkbox" id="add4" value="add"
+                                                                onchange="getarrvelue4('add4',event.target.value)" />Add</label>
+                                                        <label for="two">
+                                                            <input type="checkbox" id="edit4" value="edit"
+                                                                onchange="getarrvelue4('edit4',event.target.value)" />Edit</label>
+                                                        <label for="three">
+                                                            <input type="checkbox" id="list4" value="list"
+                                                                onchange="getarrvelue4('list4',event.target.value)" />
+                                                            List</label>
+                                                        <label for="four">
+                                                            <input type="checkbox" id="delete4" value="delete"
+                                                                onchange="getarrvelue4('delete4',event.target.value)" />
+                                                            Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="j-input">
+                                                <div class="perentcheckbox">
+                                                    <input type="checkbox" name="driver" id="driver" value=""
+                                                        onchange="showCheckboxes5(event.target.checked,'driver1')">
+                                                    <span>DRIVER</span>
+                                                </div>
+                                                <div class="multiselect">
+                                                    <div id="driver1" style="display: none;">
+                                                        <label for="one">
+                                                            <input type="checkbox" id="add5" value="add"
+                                                                onchange="getarrvelue5('add5',event.target.value)" />Add</label>
+                                                        <label for="two">
+                                                            <input type="checkbox" id="edit5" value="edit"
+                                                                onchange="getarrvelue5('edit5',event.target.value)" />Edit</label>
+                                                        <label for="three">
+                                                            <input type="checkbox" id="list5" value="list"
+                                                                onchange="getarrvelue5('list5',event.target.value)" />
+                                                            List</label>
+                                                        <label for="four">
+                                                            <input type="checkbox" id="delete5" value="delete"
+                                                                onchange="getarrvelue5('delete5',event.target.value)" />
+                                                            Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- start response from server -->
+                                        <div class="j-response"></div>
+                                        <!-- end response from server -->
+                                    </div>
+                                    <!-- end /.content -->
+                                    <div class="j-footer">
+                                        <button type="submit" class="btn btn-primary">Update Role</button>
+                                    </div>
+                                    <!-- end /.footer -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->
+<script>
+    var arr1 = []
+
+    var expanded1 = false;
+
+    function showCheckboxes1(value, dropdownid) {
+        showlist1(dropdownid)
+        if (value == true) {
+            document.getElementById("add1").checked = true;
+            document.getElementById("edit1").checked = true;
+            document.getElementById("delete1").checked = true;
+            document.getElementById("list1").checked = true;
+            arr1 = ['add', 'edit', 'delete', 'list']
+
+            document.getElementById("crm").value = arr1;
+
+
+        } else {
+            document.getElementById("add1").checked = false;
+            document.getElementById("edit1").checked = false;
+            document.getElementById("delete1").checked = false;
+            document.getElementById("list1").checked = false;
+            arr1 = [];
+            console.log('if not', arr1)
+        }
+        document.getElementById("crm").value = arr1;
+    }
+
+    function showlist1(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded1) {
+            checkboxes.style.display = "block";
+            expanded1 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded1 = false;
+        }
+
+    }
+
+    function getarrvelue1(value, sd) {
+        if (document.getElementById(value).checked == true) {
+            arr1.push(sd)
+            document.getElementById("crm").value = arr1;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr1.indexOf(sd);
+            if (index > -1) {
+                arr1.splice(index, 1);
+                if (arr1.length < 1) {
+                    document.getElementById("crm").checked = false;
+                    var checkboxes = document.getElementById("crm1");
+                    checkboxes.style.display = "none";
+                    expanded1 = false;
+                }
+            }
+        }
+        document.getElementById("crm").value = arr1;
+
+    }
+</script>
+
+<script>
+    var expanded2 = false;
+    var arr2 = []
+    function showCheckboxes2(value, dropdownid) {
+        showlist2(dropdownid)
+
+        if (value == true) {
+            document.getElementById("add2").checked = true;
+            document.getElementById("edit2").checked = true;
+            document.getElementById("delete2").checked = true;
+            document.getElementById("list2").checked = true;
+            arr2 = ['add', 'edit', 'delete', 'list']
+            document.getElementById("hr").value = arr2;
+
+
+
+        } else {
+            document.getElementById("add2").checked = false;
+            document.getElementById("edit2").checked = false;
+            document.getElementById("delete2").checked = false;
+            document.getElementById("list2").checked = false;
+            arr2 = [];
+
+        }
+        document.getElementById("hr").value = arr2;
+    }
+
+    function showlist2(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded2) {
+            checkboxes.style.display = "block";
+            expanded2 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded2 = false;
+        }
+
+    }
+
+    function getarrvelue2(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr2.push(realvelue)
+            document.getElementById("hr").value = arr2;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr2.indexOf(realvelue);
+
+            if (index > -1) {
+                arr2.splice(index, 1);
+                if (arr2.length < 1) {
+                    document.getElementById("hr").checked = false;
+                    var checkboxes = document.getElementById("hr1");
+                    checkboxes.style.display = "none";
+                    expanded2 = false;
+
+                }
+            }
+
+
+        }
+        document.getElementById("hr").value = arr2;
+
+    }
+</script>
+
+
+<script>
+    var arr3 = []
+
+    var expanded3 = false;
+
+    function showCheckboxes3(value, dropdownid) {
+        showlist3(dropdownid)
+        if (value == true) {
+            document.getElementById("add3").checked = true;
+            document.getElementById("edit3").checked = true;
+            document.getElementById("delete3").checked = true;
+            document.getElementById("list3").checked = true;
+            arr3 = ['add', 'edit', 'delete', 'list']
+            document.getElementById("report").value = arr3;
+
+
+        } else {
+            document.getElementById("add3").checked = false;
+            document.getElementById("edit3").checked = false;
+            document.getElementById("delete3").checked = false;
+            document.getElementById("list3").checked = false;
+            arr3 = [];
+
+        }
+        document.getElementById("report").value = arr3;
+    }
+
+    function showlist3(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded3) {
+            checkboxes.style.display = "block";
+            expanded3 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded3 = false;
+        }
+
+    }
+
+    function getarrvelue3(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr3.push(realvelue)
+            document.getElementById("report").value = arr3;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr3.indexOf(realvelue);
+
+            if (index > -1) {
+                arr3.splice(index, 1);
+                if (arr3.length < 1) {
+                    document.getElementById("report").checked = false;
+                    var checkboxes = document.getElementById("report1");
+                    checkboxes.style.display = "none";
+                    expanded3 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("report").value = arr3;
+
+    }
+</script>
+
+
+<script>
+    var arr4 = []
+
+    var expanded4 = false;
+
+    function showCheckboxes4(value, dropdownid) {
+        showlist4(dropdownid)
+        if (value == true) {
+            document.getElementById("add4").checked = true;
+            document.getElementById("edit4").checked = true;
+            document.getElementById("delete4").checked = true;
+            document.getElementById("list4").checked = true;
+            arr4 = ['add', 'edit', 'delete', 'list']
+            document.getElementById("vehicle").value = arr4;
+
+
+
+        } else {
+            document.getElementById("add4").checked = false;
+            document.getElementById("edit4").checked = false;
+            document.getElementById("delete4").checked = false;
+            document.getElementById("list4").checked = false;
+            arr4 = [];
+
+        }
+        document.getElementById("vehicle").value = arr4;
+    }
+
+    function showlist4(value) {
+        var checkboxes = document.getElementById(value);
+        if (!expanded4) {
+            checkboxes.style.display = "block";
+            expanded4 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded4 = false;
+        }
+
+    }
+
+    function getarrvelue4(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr4.push(realvelue)
+            document.getElementById("vehicle").value = arr4;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr4.indexOf(realvelue);
+
+            if (index > -1) {
+                arr4.splice(index, 1);
+                if (arr4.length < 1) {
+                    document.getElementById("vehicle").checked = false;
+                    var checkboxes = document.getElementById("vehicle1");
+                    checkboxes.style.display = "none";
+                    expanded4 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("vehicle").value = arr4;
+
+    }
+</script>
+
+<script>
+    var arr5 = []
+
+    var expanded5 = false;
+
+    function showCheckboxes5(value, dropdownid) {
+        showlist5(dropdownid)
+        if (value == true) {
+            document.getElementById("add5").checked = true;
+            document.getElementById("edit5").checked = true;
+            document.getElementById("delete5").checked = true;
+            document.getElementById("list5").checked = true;
+            arr5 = ['add', 'edit', 'delete', 'list']
+            document.getElementById("driver").value = arr5;
+
+
+
+        } else {
+            document.getElementById("add5").checked = false;
+            document.getElementById("edit5").checked = false;
+            document.getElementById("delete5").checked = false;
+            document.getElementById("list5").checked = false;
+            arr5 = [];
+
+        }
+        document.getElementById("driver").value = arr5;
+    }
+
+    function showlist5(value) {
+        console.log('value show5', value)
+        var checkboxes = document.getElementById(value);
+        if (!expanded5) {
+            checkboxes.style.display = "block";
+            expanded5 = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded5 = false;
+        }
+
+    }
+
+    function getarrvelue5(value, realvelue) {
+        if (document.getElementById(value).checked == true) {
+            arr5.push(realvelue)
+            document.getElementById("driver").value = arr5;
+
+        }
+        if (document.getElementById(value).checked == false) {
+
+            var index = arr5.indexOf(realvelue);
+
+            if (index > -1) {
+                arr5.splice(index, 1);
+                if (arr5.length < 1) {
+                    document.getElementById("driver").checked = false;
+                    var checkboxes = document.getElementById("driver1");
+                    checkboxes.style.display = "none";
+                    expanded5 = false;
+                }
+            }
+
+
+        }
+        document.getElementById("driver").value = arr5;
+
+    }
+</script>
+<script>
+    
+</script>

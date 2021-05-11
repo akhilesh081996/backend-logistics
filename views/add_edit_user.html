@@ -1,0 +1,294 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            {{#if data }}
+                                            <h4>Edit User</h4>
+                                            {{else}}
+                                            <h4>Add User</h4>{{/if}}
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item">HR</li>
+                                            <li class="breadcrumb-item"><a href="/users">Users</a></li>
+                                            {{#if data }}
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit User</a> {{else}}
+                                                <li class="breadcrumb-item">Add User{{/if}}
+                                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+
+                        <div class="card-block">
+                            {{#each data }}
+                            <form id="add_user" action="/add_user/{{user_id}}" method="POST" enctype="multipart/form-data">
+                                <!-- Input Role -->
+
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Agency</label>
+                                        <select name="agency" class="form-control" required id="agency" onchange="getOption()">
+                                            <option value="" selected>Select agency</option>
+                                            {{#each agency}}
+                                            <option value="{{agency_id}}">{{agency_name}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Role</label>
+                                        <select name="role" class="form-control" required id="role">
+                                                <!-- {{#each roles}}  
+                                                <option value="{{role_type}}" selected>{{role_name}}</option>
+                                                {{/each}} -->
+                                            </select>
+                                    </div>
+                                    <!-- Input Name -->
+                                    <div class="col-sm-4">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="name" id="name" value="{{username}}" required placeholder="Enter full name">
+                                        <span class="messages" id="demo"></span>
+                                    </div>
+
+                                </div>
+                                <!-- Set the user image -->
+                                <script>
+                                    var user_image_obj = {
+                                        name: '{{profile_image}}',
+                                        size: 145,
+                                        type: "image/jpg",
+                                        file: '/public/uploads/' + '{{agency_id}}' + '/driver/' + '{{profile_image}}',
+                                        url: ''
+                                    }
+                                </script>
+
+                                <!-- Input Email -->
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" value="{{email}}" required placeholder="Enter Email" onblur="usersEmail()">
+                                        <span class="messages" id="erroremail" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+                                    <!-- Input Email -->
+                                    <div class="col-sm-4">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <labe>Contact Number</label>
+                                            <input type="number" class="form-control" id="contact" required name="contact" value="{{contact}}" placeholder="Enter Contact Number">
+                                            <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>DOB</label>
+                                        <input type="date" class="form-control" name="dob" id="dob" placeholder="Enter Age" value="{{dob}}">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Experience</label> {{#if driver}}
+                                        <input type="number" class="form-control" name="experience" id="experience" value="{{driver.experience}}" placeholder="Enter Experience">
+                                        <span class="messages"></span> {{else}}
+                                        <input type="number" class="form-control" name="experience" id="experience" value="{{userprofile.experience}}" placeholder="Enter Experience">
+                                        <span class="messages"></span> {{/if}}
+                                    </div>
+                                    <!-- Input Salary -->
+                                    <div class="col-sm-4">
+                                        <label>Salary</label> {{#if driver}}
+                                        <input type="number" class="form-control" name="salary" id="salary" value="{{driver.salary}}" placeholder="Enter Salary">
+                                        <span class="messages"></span> {{else}}
+                                        <input type="number" class="form-control" name="salary" id="salary" value="{{userprofile.salary}}" placeholder="Enter Salary">
+                                        <span class="messages"></span> {{/if}}
+                                    </div>
+                                </div>
+
+                                <!-- Input Address -->
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label>Complete Address</label> {{#if driver}}
+                                        <textarea class="form-control" rows="4" cols="50" name="address" id="address" placeholder="Enter your present address">{{{driver.address}}}</textarea>
+                                        <span class="messages"></span> {{else}}
+                                        <textarea class="form-control" rows="4" cols="50" name="address" id="address" placeholder="Enter your present address">{{{userprofile.address}}}</textarea>
+                                        <span class="messages"></span> {{/if}}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">File Upload</label>
+                                    <div class="col-sm-12">
+                                        <input type="file" name="files" id="filer_input">
+                                    </div>
+                                </div>
+
+                                <!-- Input Submit button -->
+                                <div class="form-group row">
+                                    <label class="col-sm-12"></label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                        {{else}}
+                        <form id="add_user" action="/add_user/0" method="POST" enctype="multipart/form-data">
+                            <!-- Input Role -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Agency</label>
+                                <div class="col-sm-5">
+                                    <select name="agency" class="form-control" required id="agency" onchange="getOption()">
+                                            <option value="" disabled>All</option>
+                                            {{#each data.agency}}
+                                            <option value="{{agency_id}}">{{agency_name}}</option>
+                                            {{/each}}
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Role</label>
+                                <div class="col-sm-5">
+                                    <select name="role" class="form-control" required id="role">
+                                            <!-- {{#each data.roles}}
+                                            <option value="{{role_type}}" selected>{{role_name}}</option>
+                                            {{/each}} -->
+                                        </select>
+                                </div>
+                            </div>
+                            <!-- Input Name -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="name" id="name" required placeholder="Enter full name">
+                                    <span class="messages"></span>
+                                </div>
+
+                            </div>
+                            <!-- Input Email -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-5">
+                                    <input type="email" class="form-control" id="email" name="email" required placeholder="Enter Email" onblur="usersEmail()">
+                                    <span class="messages" id="erroremail" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                </div>
+                            </div>
+                            <!-- Input Email -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-5">
+                                    <input type="password" class="form-control" id="password" name="password" required placeholder="Enter Password">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Contact Number -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Contact Number</label>
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control" id="contact" required name="contact" placeholder="Enter Contact Number">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Age -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">DOB</label>
+                                <div class="col-sm-5">
+                                    <input type="date" class="form-control" name="dob" id="dob" placeholder="Enter DOB">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Qualification -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Qualification</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="qualification" id="qualification" placeholder="Enter Qualification">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Experience -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Experience</label>
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control" name="experience" id="experience" placeholder="Enter Experience">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Salary -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Salary</label>
+                                <div class="col-sm-5">
+                                    <input type="number" class="form-control" name="salary" id="salary" placeholder="Enter Salary">
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- Input Address -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Complete Address</label>
+                                <div class="col-sm-5">
+                                    <textarea class="form-control" rows="4" cols="50" name="address" id="address" placeholder="Enter your present address" required></textarea>
+                                    <span class="messages"></span>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Select profile Image :-</label>
+                                                            <div class="col-sm-10">
+                                                            <input type="file" class="form-control" id="image"
+                                                                    name="image" required >
+                                                                <span class="messages"></span>
+                                                            </div>
+                                                        </div> -->
+                            <!-- File upload card start -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">File Upload</label>
+                                <div class="col-sm-12">
+                                    <input type="file" name="files" id="filer_input">
+                                </div>
+                            </div>
+                            <!-- <div class="card">
+                                    <div class="card-header">
+                                        <h5>File Upload</h5>
+
+                                    </div>
+                                    <div class="card-block">
+                                     <div class="sub-title">Example 1</div>
+                                <input type="file" name="files[]" id="filer_input1" multiple="multiple">
+                                    </div>
+                                </div> -->
+                            <!-- File upload card end -->
+
+                            <!-- Input Submit button -->
+                            <div class="form-group row">
+                                <label class="col-sm-2"></label>
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page body end -->
+</div>
+</div>
+<!-- Main-body end -->

@@ -1,0 +1,250 @@
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+
+
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Update Vehicle</h4>
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/vehicles">Vehicle</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Vehicle</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="card-block cz-add-customer">
+                            <form id="vehicle_form" method="POST">
+                                <div class="form-group row">
+                                    <!-- <div class="col-sm-12 col-xl-4 m-b-30">
+                                        <h4 class="sub-title">Single Select</h4>
+                                        <p><code>select2</code> can take a regular select box like
+                                            this...</p>
+                                        <select class="js-example-basic-single col-sm-12">
+                                                <option value="AL">Alabama</option>
+                                                <option value="WY">Wyoming</option>
+                                                <option value="WY">Peter</option>
+                                                <option value="WY">Hanry Die</option>
+                                                <option value="WY">John Doe</option>
+                                        </select>
+                                    </div> -->
+                                    <div class="col-sm-4">
+                                        <label>Select Agency</label>
+                                        <select class="form-control" name="agency_id" id="agency"  >
+                                            {{#each agenciesList}} 
+                                            <option value="{{agency_id}}">{{agency_name}}</option>  
+                                            {{/each}}
+                                    </select>
+                                   
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Registration No</label>
+                                        <input type="text" class="form-control" name="registration_no" value="{{this.vehicle.registration_no}}" id="registration_no" required placeholder="Enter Registration No" onblur="getRegistration()">
+                                        <span class="messages" id="error_registraion" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Registration Date</label>
+                                        <input type="date" class="form-control" id="registration_date" value="{{this.vehicle.registration_date}}" name="registration_date" required placeholder="Enter Registration Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Registration Validity</label>
+                                        <input type="date" class="form-control" id="registration_validity" required name="registration_validity" value="{{this.vehicle.registration_validity}}" placeholder="Vehicle Registration ">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <!-- Set the vehile images -->
+
+                                <script>
+                                    var vehicle_image_obj = []
+                                    '{{#each vehicle_image}}'
+                                    vehicle_image_obj.push({
+                                            name: '{{profile_image}}',
+                                            size: 145,
+                                            type: "image/jpg",
+                                            file: '/public/uploads/' + '{{agency_id}}' + '/driver/' + '{{profile_image}}',
+                                            url: ''
+                                        })
+                                        // var vehicle_image_obj = {
+                                        //     name: '{{profile_image}}',
+                                        //     size: 145,
+                                        //     type: "image/jpg",
+                                        //     file: '/public/uploads/' + '{{agency_id}}' + '/driver/' + '{{profile_image}}',
+                                        //     url: ''
+                                        // }
+                                    ' {{/each}}'
+                                </script>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Chassis's No</label>
+                                        <input type="text" class="form-control" name="chassis_no" value="{{this.vehicle.chassis_no}}" id="chassis_no" required placeholder="Vehicle Chassis's No" onblur="getChassis()">
+                                        <span class="messages" id="error_chassis" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Engine No.</label>
+                                        <input type="text" class="form-control" id="engine_no" name="engine_no" value="{{this.vehicle.engine_no}}" required placeholder="Vehicle Engine No" onblur="getEngine()">
+                                        <span class="messages" id="error_engine" style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Vehicle Class</label>
+                                        <select class="form-control" name="vehicle_class" id="vehicle_class" onchange="addmore()">
+                                            <option value="auto">Auto</option>
+                                            {{#each result}}
+                                            <option value="{{vehicle_class}}">{{vehicle_class}}</option>
+                                            {{/each}}
+                                            <option value="">Others</option>
+                                        </select>
+                                        <input type="text" class="form-control" id="addoptions" style="margin-top: 10px; display: none" name="vehicle_class">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Colour</label>
+                                        <input type="text" class="form-control" name="color" value="{{this.vehicle.color}}" id="color" required placeholder="Vehicle Vehicle Color">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Standard Seating Capacity</label>
+                                        <input type="text" class="form-control" id="seating_capacity" name="seating_capacity" value="{{this.vehicle.seating_capacity}}" required placeholder="vehicle seating capacity">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>No. Of Cylinder</label>
+                                        <input type="text" class="form-control" id="no_of_cylinder" required name="no_of_cylinder" value="{{this.vehicle.no_of_cylinder}}" placeholder="No of vehicle cylinder">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Fuel Type</label>
+                                        <select class="form-control" name="fuel_type" id="fuel_type" onchange="add_fuel_type()">
+                                            <option value="petrol">Petrol</option>
+                                            <option value="diesel">Diesel</option>
+                                            {{#each result}}
+                                            <option value="{{fuel_type}}">{{fuel_type}}</option>
+                                            {{/each}}
+                                            <option value="">Others</option>
+                                        </select>
+                                        <input type="text" class="form-control" id="add_fuel" style="margin-top: 10px;display: none" name="fuel_type" placeholder="Vehicle Fuel Type">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Maker's Name</label>
+                                        <input type="text" class="form-control" name="maker_name" value="{{this.vehicle.maker_name}}" id="maker_name" required placeholder="Enter Vehicle Company Name">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>No. Of Wheels</label>
+                                        <input type="text" class="form-control" id="no_of_wheels" required name="no_of_wheels" value="{{this.vehicle.no_of_wheels}}" placeholder="No of vehicle wheels">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Tax paid Upto</label>
+                                        <input type="date" class="form-control" name="insurance_valid_upto" id="insurance_valid_upto" value="{{this.vehicle.insurance_valid_upto}}" required placeholder="Vehicle Insurance Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Insurance Valid Upto</label>
+                                        <input type="date" class="form-control" id="tax_paid_upto" name="tax_paid_upto" value="{{this.vehicle.tax_paid_upto}}" required placeholder="Vehicle Tax Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Permit Valid Upto</label>
+                                        <input type="date" class="form-control" id="permit_valid_upto" required name="permit_valid_upto" value="{{this.vehicle.permit_valid_upto}}" placeholder="Vehicle Permit Expiry Date">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label>Owner's Name</label>
+                                        <input type="text" class="form-control" name="owner_name" value="{{this.vehicle.owner_name}}" id="owner_name" required placeholder="Vehicle Owner Name">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>Owner's Contact No.</label>
+                                        <input type="text" class="form-control" id="owner_contact_no" name="owner_contact_no" value="{{this.vehicle.owner_contact_no}}" required placeholder="Owner Contact">
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <label>Complete Address</label>
+                                        <textarea class="form-control" rows="4" cols="50" name="owner_complete_address" value="{{this.vehicle.owner_complete_address}}" id="owner_complete_address" placeholder="Owner permanent address" required> {{this.vehicle.owner_complete_address}}</textarea>
+                                        <span class="messages"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <!-- <div class="row"> -->
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Vehicle Images</div>
+                                            <input type="file" name="files[]" id="filer_input1" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card-block">
+                                            <div class="sub-title">Documents</div>
+                                            <input type="file" name="files1[]" id="filer_input2" multiple="multiple">
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-round">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->

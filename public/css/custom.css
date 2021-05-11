@@ -1,0 +1,157 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.set-rotate {
+    float: left;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    -ms-animation: spin 4s linear infinite;
+    -o-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
+    margin-top: 3px;
+}
+
+.overlay {
+    background: black;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .5;
+    display: none;
+}
+
+td.not_found {
+    text-align: center;
+    color: #848484 !important;
+}
+
+.popout-footer {
+    position: fixed;
+    bottom: 0;
+    background: #3f4e66;
+    height: 50px;
+    width: 40%;
+    z-index: 2;
+}
+
+.popout-footer label {
+    float: left;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 10px;
+}
+
+.popout-footer label.first-checkin,
+.popout-footer label.last-checkout {
+    width: 105px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.popout-footer label.total-hours {
+    float: right;
+    width: 85px;
+    margin-right: 25px;
+    text-align: right;
+}
+
+.popout-footer label span {
+    display: block;
+    font-size: 17px;
+    color: #b3d1ff;
+}
+
+.popout {
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    background: white;
+    width: 40%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    right: -50%;
+    padding-top: 56px;
+    overflow-y: auto;
+}
+
+.popout.left-animate {
+    right: 0;
+}
+
+.popout-table td:first-child {
+    color: #0ac282;
+}
+
+.popout-table td:nth-child(2) {
+    color: #f15e72;
+}
+
+span.cross {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    line-height: 30px;
+    text-align: center;
+    color: #f15e72;
+    transform: rotate(45deg);
+    font-size: 25px;
+    right: 10px;
+    top: 70px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.popout-document {
+    padding: 20px;
+}
+
+.popout-document h5 {
+    border-bottom: 1px solid silver;
+    padding-bottom: 15px;
+}
+
+.modal-popout-document .input-group {
+    margin: 0;
+}
+
+.popout-document .form-group {
+    margin: 0 -15px 10px;
+}
+
+.popout-buttons {
+    margin-top: 15px;
+}
+
+table.table.table-hover.show-user-attendance {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.main-poput-button {
+    padding: 6px 15px;
+    margin: 0 auto 70px;
+    display: block;
+}
+
+.modal-popout-document {
+    margin-top: 10px;
+    padding: 10px 15px 5px;
+    border: 1px dashed silver;
+    display: none;
+}

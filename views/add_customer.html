@@ -1,0 +1,149 @@
+<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.6/bootstrap-growl.min.js"></script> -->
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page body start -->
+        <div class="page-body">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- Basic Inputs Validation start -->
+                    <div class="card">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="row align-items-end">
+                                <div class="col-lg-8">
+                                    <div class="page-header-title">
+                                        <div class="d-inline">
+                                            <h4>Add Customer</h4>
+                                            <span> Please fill complete details.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="page-header-breadcrumb">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="dashboard"> <i class="feather icon-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">CRM</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Add Customer</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="card-block cz-add-customer">
+                            <form id="main" action="/add_customer" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label>Choose Agency</label>
+                                        <select class="form-control" name="agencies_id" id="agencies_id"
+                                            onchange="getselect()">
+
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control" hidden name="agency_name" id="agency_name"
+                                        placeholder="Enter full name">
+                                    <span class="messages"></span>
+
+                                    <div class="col-sm-4">
+                                        <label>Firstname</label>
+                                        <input type="text" class="form-control" name="first_name" id="first_name"
+                                            required placeholder="Enter full name">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Lastname</label>
+                                        <input type="text" class="form-control" name="last_name" id="last_name" required
+                                            placeholder="Enter full name">
+                                        <span class="messages"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" id="user_email" name="user_email"
+                                            required placeholder="Enter your Email" onblur="getemail()">
+                                        <span class="messages" id="erroremail"
+                                            style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Contact no</label>
+                                        <input type="number" maxlength="10" class="form-control" id="contact_no"
+                                            required name="contact_no" placeholder="conatct" onblur="getcontact()">
+                                        <span class="messages" id="errorcontact"
+                                            style="color: darkred; font-size: 16px;font-weight: 500; text-align:right;"></span>
+                                    </div>
+
+
+                                    <div class="col-sm-4">
+                                        <label>Whatsapp no</label>
+                                        <input type="number" maxlength="10" class="form-control" id="whats_app_no"
+                                            required name="whats_app_no" placeholder="Whatsapp Number">
+                                        <span class="messages"></span>
+                                    </div>
+
+
+                                    <div class="col-sm-4">
+                                        <label>Country</label>
+                                        <input type="text" class="form-control" id="country" required name="country"
+                                            placeholder="country">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" id="city" required name="city"
+                                            placeholder="city">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" id="state" required name="state"
+                                            placeholder="State">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Pin</label>
+                                        <input type="number" class="form-control" id="pin" required name="pin"
+                                            placeholder="Pin Number">
+                                        <span class="messages"></span>
+                                    </div>
+                                    <!-- <div class="form-group row"> -->
+                                    <div class="col-sm-6">
+                                        <label>Complete Address</label>
+                                        <textarea class="form-control" rows="3" cols="40" name="address" id="address"
+                                            placeholder="Complete address..." required></textarea>
+                                        <span class="messages"></span>
+                                    </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="form-group row"> -->
+                                    <div class="col-sm-6">
+                                        <label>Notes</label>
+                                        <textarea class="form-control" rows="3" cols="40" name="notes" id="notes"
+                                            placeholder="Write Something..."></textarea>
+                                        <span class="messages"></span>
+                                    </div>
+                                    <!-- </div> -->
+
+                                    <!-- <div class="form-group row"> -->
+                                    <div class="col-sm-4 ">
+                                        <button class="btn btn-primary btn-round margin-top20" data-type="success"
+                                            data-from="top" data-align="right">Submit</button>
+                                        <!-- <button type="submit" id="btn" class="btn btn-primary btn-round" onclick="notify(this)">Submit</button> -->
+                                    </div>
+                                    <!-- </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page body end -->
+    </div>
+</div>
+<!-- Main-body end -->
